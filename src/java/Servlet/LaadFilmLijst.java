@@ -5,8 +5,15 @@
  */
 package Servlet;
 
+import bll.Film;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
+import javax.mail.Session;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -32,7 +39,16 @@ public class LaadFilmLijst extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            
+            EntityManagerFactory emf = Persistence.createEntityManagerFactory("EindwerkJavaFilmShopPU");
+            EntityManager em = emf.createEntityManager();
+            em.getTransaction().begin();
+            List<Film> filmLijst = em.createNamedQuery("Film.findAll").getResultList();
+            em.getTransaction().commit();
+            em.close();
+            emf.close();
+            request.getSession().setAttribute("FilmLijst", filmLijst);
+            RequestDispatcher rs = request.getRequestDispatcher("Films.jsp");
+            rs.forward(request, response);
         }
     }
 
