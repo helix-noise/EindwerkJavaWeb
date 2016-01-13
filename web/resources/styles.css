@@ -300,6 +300,11 @@ small.text-muted {
     font-family: courier,courier-new,monospace;
 }
 
+.col-centered{
+    float: none;
+    margin: 0 auto;
+}
+
 /* adjust the contents on smaller devices */
 @media (max-width: 768px) {
 

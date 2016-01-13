@@ -1,7 +1,7 @@
 <%@page import="bll.Film"%>
 <%@include file="Template/header.jsp" %>
 <% Film film = (Film) session.getAttribute("FilmDetail");%>
-<div class="col-md-5 col-md-offset-4">
+<div class="col-md-5 col-centered">
     <h2 style="text-align: center">Detail</h2>
     <div class="well well-lg">
         <div class="row">

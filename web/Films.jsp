@@ -35,4 +35,5 @@
         <% count++; %>
         <% }%>
     </div>
-    <%@include file="Template/footer.jsp" %>
+</div>
+<%@include file="Template/footer.jsp" %>

@@ -46,7 +46,7 @@
                                 </ul>
                                 <ul class="nav navbar-nav navbar-right" style="padding-right: 3%">
                                     <li>
-                                        <a href="Contact.jsp"><i class="glyphicon glyphicon-user"></i> Registreren</a>
+                                        <a href="Registreren.jsp"><i class="glyphicon glyphicon-user"></i> Registreren</a>
                                     </li>
                                     <li>
                                         <a href="Contact.jsp"><i class="glyphicon glyphicon-log-in"></i> Log-in</a>
