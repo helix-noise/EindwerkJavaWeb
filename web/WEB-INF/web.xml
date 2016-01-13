@@ -4,9 +4,17 @@
         <servlet-name>LaadFilmLijst</servlet-name>
         <servlet-class>Servlet.LaadFilmLijst</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>HaalDetails</servlet-name>
+        <servlet-class>Servlet.HaalDetails</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LaadFilmLijst</servlet-name>
         <url-pattern>/LaadFilmLijst</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>HaalDetails</servlet-name>
+        <url-pattern>/HaalDetails</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

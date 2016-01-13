@@ -292,7 +292,8 @@ h1, h2, h3 {
     padding-top: 2%
 }
 .row-down3 {
-    padding-top: 130%
+    clear: both;
+    padding-top: 5% ;
 }
 
 small.text-muted {

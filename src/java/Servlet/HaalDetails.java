@@ -8,22 +8,22 @@ package Servlet;
 import bll.Film;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
-import javax.mail.Session;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.Query;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author Helix
  */
-public class LaadFilmLijst extends HttpServlet {
+public class HaalDetails extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,15 +38,18 @@ public class LaadFilmLijst extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
+            int id = Integer.parseInt(request.getParameter("id"));
             EntityManagerFactory emf = Persistence.createEntityManagerFactory("EindwerkJavaFilmShopPU");
             EntityManager em = emf.createEntityManager();
             em.getTransaction().begin();
-            List<Film> filmLijst = em.createNamedQuery("Film.findAll").getResultList();
+            Query q = em.createNamedQuery("Film.findById");
+            q.setParameter("id", id);
+            Film film = (Film) q.getSingleResult();
             em.getTransaction().commit();
             em.close();
             emf.close();
-            request.getSession().setAttribute("FilmLijst", filmLijst);
-            RequestDispatcher rs = request.getRequestDispatcher("Films.jsp");
+            request.getSession().setAttribute("FilmDetail", film);
+            RequestDispatcher rs = request.getRequestDispatcher("Detail.jsp");
             rs.forward(request, response);
         }
     }
