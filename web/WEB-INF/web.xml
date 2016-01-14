@@ -8,6 +8,10 @@
         <servlet-name>HaalDetails</servlet-name>
         <servlet-class>Servlet.HaalDetails</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>RegistreerKlant</servlet-name>
+        <servlet-class>Servlet.RegistreerKlant</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LaadFilmLijst</servlet-name>
         <url-pattern>/LaadFilmLijst</url-pattern>
@@ -15,6 +19,10 @@
     <servlet-mapping>
         <servlet-name>HaalDetails</servlet-name>
         <url-pattern>/HaalDetails</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RegistreerKlant</servlet-name>
+        <url-pattern>/RegistreerKlant</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -49,7 +49,7 @@
                                         <a href="Registreren.jsp"><i class="glyphicon glyphicon-user"></i> Registreren</a>
                                     </li>
                                     <li>
-                                        <a href="Contact.jsp"><i class="glyphicon glyphicon-log-in"></i> Log-in</a>
+                                        <a href="Login.jsp"><i class="glyphicon glyphicon-log-in"></i> Log-in</a>
                                     </li>
                                 </ul>
                             </nav>

@@ -1,32 +1,65 @@
 <%@include file="Template/header.jsp" %>
 
-<div class="col-md-5 col-centered">
-    <h2 style="text-align: center">Registreren</h2>
-    <div class="well well-lg">
-        <form>
-            <dl class="table text-center">
-                <dt>Voornaam</dt>
-                <dd><input type="text" name="Voornaam" class="form-control"></dd>
-                <dt>Achternaam</dt>
-                <dd><input type="text" name="Achternaam" class="form-control"></dd>
-                <dt>E-mail</dt>
-                <dd><input type="text" name="Email" class="form-control"></dd>
-                <dt>Adres</dt>
-                <dd><input type="text" name="Adres" class="form-control"></dd>
-                <dt>Stad</dt>
-                <dd><input type="text" name="Stad" class="form-control"></dd>
-                <dt>Postcode</dt>
-                <dd><input type="text" name="Postcode" class="form-control"></dd>
-                <dt>Telefoonnummer</dt>
-                <dd><input type="text" name="Telefoon" class="form-control"></dd>
-            </dl>
-            <div class="row">
-                <div class="col-sm-8 col-centered">
-                    <a href="Index.jsp" class="btn btn-lg btn-warning glyphicon glyphicon-home"> Home</a>
-                    <input type="submit" class="btn btn-lg btn-warning" value="Registreren">
+<div class="container">
+    <h1 class="well text-center">Registreren</h1>
+    <div class="col-lg-12 well">
+        <div class="row">
+            <form action="RegistreerKlant" method="POST">
+                <div class="col-sm-12">
+                    <div class="row">
+                        <div class="col-sm-6 form-group">
+                            <label>Voornaam</label>
+                            <input type="text" placeholder="Plaats hier uw voornaam.." class="form-control" name="Voornaam" required>
+                        </div>
+                        <div class="col-sm-6 form-group">
+                            <label>Achternaam</label>
+                            <input type="text" placeholder="Plaats hier uw achternaam.." class="form-control" name="Achternaam" required>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class=" col-sm-12 form-group">
+                            <label>Straat</label>
+                            <textarea placeholder="Plaats hier uw straatnaam.." rows="2" class="form-control" name="Straat" required></textarea>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4 form-group">
+                            <label>Huisnummer</label>
+                            <input type="text" placeholder="Huisnummer en bus.." class="form-control" name="Huisnummer" required>
+                        </div>	
+                        <div class="col-sm-4 form-group">
+                            <label>Postcode</label>
+                            <input type="text" placeholder="Plaats hier uw postcode.." class="form-control" name="Postcode" required>
+                        </div>	
+                        <div class="col-sm-4 form-group">
+                            <label>Stad</label>
+                            <input type="text" placeholder="Plaats hier uw stad.." class="form-control" name="Stad" required>
+                        </div>		
+                    </div>						
+                    <div class="col-sm-12 form-group">
+                        <label>Telefoon</label>
+                        <input type="text" placeholder="Plaats hier uw telefoonnummer.." class="form-control" name="Telefoon" required>
+                    </div>
+                    <div class="col-sm-12 form-group">
+                        <label>E-mail</label>
+                        <input type="email" placeholder="Plaats hier uw e-mail.." class="form-control" name="Email" required>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6 form-group">
+                            <label>Paswoord</label>
+                            <input type="password" placeholder="Plaats hier uw paswoord.." class="form-control" name="Paswoord" required>
+                        </div>		
+                        <div class="col-sm-6 form-group">
+                            <label>Herhaal paswoord</label>
+                            <input type="password" placeholder="Herhaal uw paswoord.." class="form-control" name="HPaswoord" required>
+                        </div>	
+                    </div>
+                    <div class="col-sm-12 form-group text-center">
+                        <button type="button" class="btn btn-lg btn-warning">Registreren</button>
+                    </div>
                 </div>
-            </div>
-        </form>
+            </form> 
+        </div>
     </div>
 </div>
 
