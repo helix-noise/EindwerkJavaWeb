@@ -4,7 +4,7 @@
     <h1 class="well text-center">Registreren</h1>
     <div class="col-lg-12 well">
         <div class="row">
-            <form action="RegistreerKlant" method="POST">
+            <form name="RegistreerKlant" action="RegistreerKlant" onsubmit="return validatePassword()" method="POST">
                 <div class="col-sm-12">
                     <div class="row">
                         <div class="col-sm-6 form-group">
@@ -29,7 +29,7 @@
                         </div>	
                         <div class="col-sm-4 form-group">
                             <label>Postcode</label>
-                            <input type="text" placeholder="Plaats hier uw postcode.." class="form-control" name="Postcode" required>
+                            <input type="number" placeholder="Plaats hier uw postcode.." class="form-control" name="Postcode" required>
                         </div>	
                         <div class="col-sm-4 form-group">
                             <label>Stad</label>
@@ -38,7 +38,7 @@
                     </div>						
                     <div class="col-sm-12 form-group">
                         <label>Telefoon</label>
-                        <input type="text" placeholder="Plaats hier uw telefoonnummer.." class="form-control" name="Telefoon" required>
+                        <input type="text" placeholder="016/589780" class="form-control" name="Telefoon" required>
                     </div>
                     <div class="col-sm-12 form-group">
                         <label>E-mail</label>
@@ -55,7 +55,7 @@
                         </div>	
                     </div>
                     <div class="col-sm-12 form-group text-center">
-                        <button type="button" class="btn btn-lg btn-warning">Registreren</button>
+                        <button type="submit" class="btn btn-lg btn-warning">Registreren</button>
                     </div>
                 </div>
             </form> 
