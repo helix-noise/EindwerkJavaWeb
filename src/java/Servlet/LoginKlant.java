@@ -5,15 +5,8 @@
  */
 package Servlet;
 
-import bll.Film;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
-import javax.mail.Session;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -23,10 +16,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Helix
  */
-public class LaadFilmLijst extends HttpServlet {
-
-    private EntityManagerFactory emf;
-    private EntityManager em;
+public class LoginKlant extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -40,20 +30,17 @@ public class LaadFilmLijst extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try {
-            emf = Persistence.createEntityManagerFactory("EindwerkJavaFilmShopPU");
-            em = emf.createEntityManager();
-            em.getTransaction().begin();
-            List<Film> filmLijst = em.createNamedQuery("Film.findAll").getResultList();
-            em.getTransaction().commit();
-            request.getSession().setAttribute("FilmLijst", filmLijst);
-            RequestDispatcher rs = request.getRequestDispatcher("Films.jsp");
-            rs.forward(request, response);
-        } catch (Exception e) {
-
-        } finally {
-            em.close();
-            emf.close();
+        try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet LoginKlant</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet LoginKlant at " + request.getContextPath() + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
         }
     }
 

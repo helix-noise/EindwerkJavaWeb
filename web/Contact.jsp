@@ -37,7 +37,7 @@
 
                         <div class="form-group">
                             <div class="col-md-12 text-center">
-                                <button type="submit" class="btn btn-warning btn-lg">Verzenden</button>
+                                <button type="submit" class="btn btn-warning btn-lg glyphicon glyphicon-envelope"> Verzenden</button>
                             </div>
                         </div>
                     </fieldset>

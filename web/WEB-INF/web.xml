@@ -12,6 +12,10 @@
         <servlet-name>RegistreerKlant</servlet-name>
         <servlet-class>Servlet.RegistreerKlant</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>LoginKlant</servlet-name>
+        <servlet-class>Servlet.LoginKlant</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LaadFilmLijst</servlet-name>
         <url-pattern>/LaadFilmLijst</url-pattern>
@@ -23,6 +27,10 @@
     <servlet-mapping>
         <servlet-name>RegistreerKlant</servlet-name>
         <url-pattern>/RegistreerKlant</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LoginKlant</servlet-name>
+        <url-pattern>/LoginKlant</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

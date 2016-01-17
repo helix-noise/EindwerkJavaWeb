@@ -24,7 +24,7 @@
                                 <a href="HaalDetails?id=<%= f.getId() %>" class="btn btn-block btn-warning glyphicon glyphicon-eye-open"> Detail</a>
                             </div>
                             <div class="col-sm-6">
-                                <a href=""  class="btn btn-block btn-warning glyphicon glyphicon-shopping-cart"> Aankopen</a> <%-- @Html.ActionLink(" Aankopen", "BuyItem", "Order", new { id = item.ProductId }, new { @class = "btn btn-block btn-warning glyphicon glyphicon-shopping-cart" }) --%>
+                                <a href=""  class="btn btn-block btn-warning glyphicon glyphicon-shopping-cart"> Aankopen</a>
                             </div>
                         </div>
                     </div>

@@ -55,7 +55,7 @@
                         </div>	
                     </div>
                     <div class="col-sm-12 form-group text-center">
-                        <button type="submit" class="btn btn-lg btn-warning">Registreren</button>
+                        <button type="submit" class="btn btn-lg btn-warning glyphicon glyphicon-user"> Registreren</button>
                     </div>
                 </div>
             </form> 
