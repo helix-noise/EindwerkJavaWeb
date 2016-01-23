@@ -6,11 +6,14 @@
         <div class="row">
             <form action="LoginKlant" method="POST">
                 <div class="col-sm-12">
+                    <% if(request.getAttribute("error") != null){ %>
+                    <p class="text-center" style="color: red;"><b><%= request.getAttribute("error") %></b></p>
+                    <%}%>
                     <div class="row">
                         <div class="form-group">
                             <span class="col-sm-1  col-sm-offset-3"><i class="glyphicon glyphicon-user" style="font-size: 35px; color: chocolate"></i></span>
                             <div class="col-sm-4">
-                                <input type="email" class="form-control" placeholder="E-mail" required>
+                                <input type="email" class="form-control" placeholder="E-mail" name="Email" required>
                             </div>
                         </div>
                     </div>
@@ -18,7 +21,7 @@
                         <div class="form-group">
                             <span class="col-sm-1  col-sm-offset-3"><i class="glyphicon glyphicon-lock" style="font-size: 35px; color: chocolate"></i></span>
                             <div class="col-sm-4">
-                                <input type="password" class="form-control" placeholder="Paswoord" required>
+                                <input type="password" class="form-control" placeholder="Paswoord" name="Paswoord" required>
                             </div>
                         </div>
 

@@ -46,7 +46,7 @@ public class LaadFilmLijst extends HttpServlet {
             em.getTransaction().begin();
             List<Film> filmLijst = em.createNamedQuery("Film.findAll").getResultList();
             em.getTransaction().commit();
-            request.getSession().setAttribute("FilmLijst", filmLijst);
+            request.setAttribute("FilmLijst", filmLijst);
             RequestDispatcher rs = request.getRequestDispatcher("Films.jsp");
             rs.forward(request, response);
         } catch (Exception e) {

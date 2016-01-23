@@ -1,7 +1,7 @@
 <%@page import="java.util.List"%>
 <%@page import="bll.Film"%>
 <% int count = 0; %>
-<% List<Film> FilmLijst = (List<Film>) session.getAttribute("FilmLijst"); %>
+<% List<Film> FilmLijst = (List<Film>) request.getAttribute("FilmLijst"); %>
 <%@include file="Template/header.jsp" %>
 <div class="container-fluid">
     <% for (Film f : FilmLijst) { %>

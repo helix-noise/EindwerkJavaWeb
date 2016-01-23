@@ -4,6 +4,7 @@
     Author     : Helix
 --%>
 
+<%@page import="bll.Klant"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -45,12 +46,26 @@
                                     </li>
                                 </ul>
                                 <ul class="nav navbar-nav navbar-right" style="padding-right: 3%">
+                                    <% if (session.getAttribute("LoggedUser") != null) { %>
+                                    <% Klant k = (Klant) session.getAttribute("LoggedUser");%>
+                                    <li>
+                                        <a href="DetailKlant.jsp"><i class="glyphicon glyphicon-user"></i> <%= k.getVoornaam() %></a>
+                                    </li>
+                                    <li>
+                                        <a href=""><i class="glyphicon glyphicon-shopping-cart"></i> Winkelmandje</a>
+                                    </li>
+                                    <li>
+                                        <a href="Afmelden"><i class="glyphicon glyphicon-log-out"></i> Afmelden</a>
+                                    </li>
+                                    <% } else { %>
                                     <li>
                                         <a href="Registreren.jsp"><i class="glyphicon glyphicon-user"></i> Registreren</a>
                                     </li>
                                     <li>
-                                        <a href="Login.jsp"><i class="glyphicon glyphicon-log-in"></i> Log-in</a>
+                                        <a href="Login.jsp"><i class="glyphicon glyphicon-log-in"></i> Aanmelden</a>
                                     </li>
+                                    <% }%>
+
                                 </ul>
                             </nav>
                         </div>

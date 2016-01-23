@@ -5,8 +5,14 @@
  */
 package Servlet;
 
+import bll.Klant;
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import javax.persistence.Query;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -17,6 +23,11 @@ import javax.servlet.http.HttpServletResponse;
  * @author Helix
  */
 public class LoginKlant extends HttpServlet {
+
+    private EntityManagerFactory emf;
+    private EntityManager em;
+    private Klant k;
+    private String error;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -31,16 +42,34 @@ public class LoginKlant extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet LoginKlant</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet LoginKlant at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+            try {
+                emf = Persistence.createEntityManagerFactory("EindwerkJavaFilmShopPU");
+                em = emf.createEntityManager();
+                em.getTransaction().begin();
+                Query q = em.createNamedQuery("Klant.findByEmail").setParameter("email", request.getParameter("Email"));
+                try {
+                    k = (Klant) q.getSingleResult();
+                    if (k.getPaswoord().equals(request.getParameter("Paswoord"))) {
+                        //TODO: login session maken !!
+                        request.getSession().setAttribute("LoggedUser", k);
+                        RequestDispatcher rs = request.getRequestDispatcher("Index.jsp");
+                        rs.forward(request, response);
+                    } else {
+                        request.setAttribute("error", "Foutief paswoord!");
+                        RequestDispatcher rs = request.getRequestDispatcher("Login.jsp");
+                        rs.forward(request, response);
+                    }
+                } catch (Exception e) {
+                    request.setAttribute("error", "Gebruiker bestaat niet!");
+                    RequestDispatcher rs = request.getRequestDispatcher("Login.jsp");
+                    rs.forward(request, response);
+                }
+            } catch (Exception e) {
+
+            } finally {
+                em.close();
+                emf.close();
+            }
         }
     }
 

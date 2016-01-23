@@ -5,13 +5,8 @@
  */
 package Servlet;
 
-import bll.Film;
 import java.io.IOException;
 import java.io.PrintWriter;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-import javax.persistence.Query;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -22,10 +17,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Helix
  */
-public class HaalDetails extends HttpServlet {
-
-    private EntityManagerFactory emf;
-    private EntityManager em;
+public class Afmelden extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -40,23 +32,9 @@ public class HaalDetails extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            try {
-                int id = Integer.parseInt(request.getParameter("id"));
-                emf = Persistence.createEntityManagerFactory("EindwerkJavaFilmShopPU");
-                em = emf.createEntityManager();
-                em.getTransaction().begin();
-                Query q = em.createNamedQuery("Film.findById");
-                q.setParameter("id", id);
-                Film film = (Film) q.getSingleResult();
-                request.setAttribute("FilmDetail", film);
-                RequestDispatcher rs = request.getRequestDispatcher("Detail.jsp");
-                rs.forward(request, response);
-            } catch (Exception e) {
-
-            } finally {
-                em.close();
-                emf.close();
-            }
+            request.getSession().removeAttribute("LoggedUser");
+            RequestDispatcher rs = request.getRequestDispatcher("Index.jsp");
+            rs.forward(request, response);
         }
     }
 

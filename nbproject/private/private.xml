@@ -3,10 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Helix/Documents/Cvo%20Antwerpen%20HBO%20Informatica%202015-2016/Programmeren%204/Eindwerk%20Java%202016/EindwerkJavaWeb/src/java/Servlet/RegistreerKlant.java</file>
-            <file>file:/C:/Users/Helix/Documents/Cvo%20Antwerpen%20HBO%20Informatica%202015-2016/Programmeren%204/Eindwerk%20Java%202016/EindwerkJavaWeb/web/Template/header.jsp</file>
+            <file>file:/C:/Users/Helix/Documents/Cvo%20Antwerpen%20HBO%20Informatica%202015-2016/Programmeren%204/Eindwerk%20Java%202016/EindwerkJavaWeb/src/java/bll/Klant.java</file>
+            <file>file:/C:/Users/Helix/Documents/Cvo%20Antwerpen%20HBO%20Informatica%202015-2016/Programmeren%204/Eindwerk%20Java%202016/EindwerkJavaWeb/web/Detail.jsp</file>
+            <file>file:/C:/Users/Helix/Documents/Cvo%20Antwerpen%20HBO%20Informatica%202015-2016/Programmeren%204/Eindwerk%20Java%202016/EindwerkJavaWeb/src/java/Servlet/LaadFilmLijst.java</file>
+            <file>file:/C:/Users/Helix/Documents/Cvo%20Antwerpen%20HBO%20Informatica%202015-2016/Programmeren%204/Eindwerk%20Java%202016/EindwerkJavaWeb/web/Login.jsp</file>
+            <file>file:/C:/Users/Helix/Documents/Cvo%20Antwerpen%20HBO%20Informatica%202015-2016/Programmeren%204/Eindwerk%20Java%202016/EindwerkJavaWeb/src/java/Servlet/LoginKlant.java</file>
+            <file>file:/C:/Users/Helix/Documents/Cvo%20Antwerpen%20HBO%20Informatica%202015-2016/Programmeren%204/Eindwerk%20Java%202016/EindwerkJavaWeb/web/Films.jsp</file>
+            <file>file:/C:/Users/Helix/Documents/Cvo%20Antwerpen%20HBO%20Informatica%202015-2016/Programmeren%204/Eindwerk%20Java%202016/EindwerkJavaWeb/src/java/Servlet/HaalDetails.java</file>
             <file>file:/C:/Users/Helix/Documents/Cvo%20Antwerpen%20HBO%20Informatica%202015-2016/Programmeren%204/Eindwerk%20Java%202016/EindwerkJavaWeb/web/Registreren.jsp</file>
-            <file>file:/C:/Users/Helix/Documents/Cvo%20Antwerpen%20HBO%20Informatica%202015-2016/Programmeren%204/Eindwerk%20Java%202016/EindwerkJavaWeb/web/resources/CustomJavaScript.js</file>
         </group>
     </open-files>
 </project-private>
