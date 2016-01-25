@@ -20,6 +20,18 @@
         <servlet-name>Afmelden</servlet-name>
         <servlet-class>Servlet.Afmelden</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>BewerkKlant</servlet-name>
+        <servlet-class>Servlet.BewerkKlant</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DetailVerkoop</servlet-name>
+        <servlet-class>Servlet.DetailVerkoop</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>WinkelMandje</servlet-name>
+        <servlet-class>Servlet.WinkelMandjeServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LaadFilmLijst</servlet-name>
         <url-pattern>/LaadFilmLijst</url-pattern>
@@ -39,6 +51,18 @@
     <servlet-mapping>
         <servlet-name>Afmelden</servlet-name>
         <url-pattern>/Afmelden</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>BewerkKlant</servlet-name>
+        <url-pattern>/BewerkKlant</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DetailVerkoop</servlet-name>
+        <url-pattern>/DetailVerkoop</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>WinkelMandje</servlet-name>
+        <url-pattern>/WinkelMandje</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

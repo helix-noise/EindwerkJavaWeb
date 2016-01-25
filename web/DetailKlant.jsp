@@ -44,7 +44,7 @@
                 <div class="panel-footer">
                     <a href="Index.jsp" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-home"></i> Home</a>
                     <div class="pull-right">
-                        <a href="" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit"></i> Bewerken</a>
+                        <a href="BewerkKlant.jsp" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit"></i> Bewerken</a>
                     </div>
                 </div>
             </div>

@@ -52,9 +52,6 @@
                                         <a href="DetailKlant.jsp"><i class="glyphicon glyphicon-user"></i> <%= k.getVoornaam() %></a>
                                     </li>
                                     <li>
-                                        <a href=""><i class="glyphicon glyphicon-shopping-cart"></i> Winkelmandje</a>
-                                    </li>
-                                    <li>
                                         <a href="Afmelden"><i class="glyphicon glyphicon-log-out"></i> Afmelden</a>
                                     </li>
                                     <% } else { %>

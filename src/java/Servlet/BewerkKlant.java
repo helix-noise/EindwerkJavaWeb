@@ -5,11 +5,12 @@
  */
 package Servlet;
 
-import bll.Film;
+import bll.Klant;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 import javax.servlet.RequestDispatcher;
@@ -22,10 +23,11 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Helix
  */
-public class HaalDetails extends HttpServlet {
+public class BewerkKlant extends HttpServlet {
 
     private EntityManagerFactory emf;
     private EntityManager em;
+    private EntityTransaction trans;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -44,12 +46,22 @@ public class HaalDetails extends HttpServlet {
                 int id = Integer.parseInt(request.getParameter("id"));
                 emf = Persistence.createEntityManagerFactory("EindwerkJavaFilmShopPU");
                 em = emf.createEntityManager();
-                em.getTransaction().begin();
-                Query q = em.createNamedQuery("Film.findById");
-                q.setParameter("id", id);
-                Film film = (Film) q.getSingleResult();
-                request.setAttribute("FilmDetail", film);
-                RequestDispatcher rs = request.getRequestDispatcher("Detail.jsp");
+                trans = em.getTransaction();
+                trans.begin();
+                Query q = em.createNamedQuery("Klant.findById").setParameter("id", id);
+                Klant klant = (Klant) q.getSingleResult();
+                klant.setVoornaam(request.getParameter("Voornaam"));
+                klant.setAchternaam(request.getParameter("Achternaam"));
+                klant.setStraatnaam(request.getParameter("Straat"));
+                klant.setHuisnummer(request.getParameter("Huisnummer"));
+                klant.setPostcode(Integer.parseInt(request.getParameter("Postcode")));
+                klant.setStad(request.getParameter("Stad"));
+                klant.setTelefoon(request.getParameter("Telefoon"));
+                klant.setEmail(request.getParameter("Email"));
+                em.persist(klant);
+                trans.commit();
+                request.getSession().setAttribute("LoggedUser", klant);
+                RequestDispatcher rs = request.getRequestDispatcher("DetailKlant.jsp");
                 rs.forward(request, response);
             } catch (Exception e) {
                 RequestDispatcher rs = request.getRequestDispatcher("ErrorPagina.jsp");

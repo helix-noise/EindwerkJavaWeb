@@ -24,9 +24,9 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class RegistreerKlant extends HttpServlet {
 
-    EntityManagerFactory emf;
-    EntityManager em;
-    EntityTransaction trans;
+    private EntityManagerFactory emf;
+    private EntityManager em;
+    private EntityTransaction trans;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -63,7 +63,8 @@ public class RegistreerKlant extends HttpServlet {
                 rs.forward(request, response);
 
             } catch (Exception e) {
-
+                RequestDispatcher rs = request.getRequestDispatcher("ErrorPagina.jsp");
+                rs.forward(request, response);
             } finally {
                 em.close();
                 emf.close();

@@ -22,7 +22,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Helix
  */
-public class HaalDetails extends HttpServlet {
+public class DetailVerkoop extends HttpServlet {
 
     private EntityManagerFactory emf;
     private EntityManager em;
@@ -40,24 +40,31 @@ public class HaalDetails extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            try {
-                int id = Integer.parseInt(request.getParameter("id"));
-                emf = Persistence.createEntityManagerFactory("EindwerkJavaFilmShopPU");
-                em = emf.createEntityManager();
-                em.getTransaction().begin();
-                Query q = em.createNamedQuery("Film.findById");
-                q.setParameter("id", id);
-                Film film = (Film) q.getSingleResult();
-                request.setAttribute("FilmDetail", film);
-                RequestDispatcher rs = request.getRequestDispatcher("Detail.jsp");
+            if (request.getSession().getAttribute("LoggedUser") != null) {
+                try {
+                    int id = Integer.parseInt(request.getParameter("id"));
+                    emf = Persistence.createEntityManagerFactory("EindwerkJavaFilmShopPU");
+                    em = emf.createEntityManager();
+                    em.getTransaction().begin();
+                    Query q = em.createNamedQuery("Film.findById");
+                    q.setParameter("id", id);
+                    Film film = (Film) q.getSingleResult();
+                    request.setAttribute("FilmVerkoop", film);
+                    RequestDispatcher rs = request.getRequestDispatcher("DetailAankopen.jsp");
+                    rs.forward(request, response);
+                } catch (Exception e) {
+                    RequestDispatcher rs = request.getRequestDispatcher("ErrorPagina.jsp");
+                    rs.forward(request, response);
+                } finally {
+                    em.close();
+                    emf.close();
+                }
+            } else {
+                request.setAttribute("error", "Gelieven eerst in te loggen voor aankoop.");
+                RequestDispatcher rs = request.getRequestDispatcher("Login.jsp");
                 rs.forward(request, response);
-            } catch (Exception e) {
-                RequestDispatcher rs = request.getRequestDispatcher("ErrorPagina.jsp");
-                rs.forward(request, response);
-            } finally {
-                em.close();
-                emf.close();
             }
+
         }
     }
 

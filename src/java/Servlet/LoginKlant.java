@@ -27,7 +27,6 @@ public class LoginKlant extends HttpServlet {
     private EntityManagerFactory emf;
     private EntityManager em;
     private Klant k;
-    private String error;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -50,7 +49,6 @@ public class LoginKlant extends HttpServlet {
                 try {
                     k = (Klant) q.getSingleResult();
                     if (k.getPaswoord().equals(request.getParameter("Paswoord"))) {
-                        //TODO: login session maken !!
                         request.getSession().setAttribute("LoggedUser", k);
                         RequestDispatcher rs = request.getRequestDispatcher("Index.jsp");
                         rs.forward(request, response);
@@ -65,7 +63,8 @@ public class LoginKlant extends HttpServlet {
                     rs.forward(request, response);
                 }
             } catch (Exception e) {
-
+                RequestDispatcher rs = request.getRequestDispatcher("ErrorPagina.jsp");
+                rs.forward(request, response);
             } finally {
                 em.close();
                 emf.close();

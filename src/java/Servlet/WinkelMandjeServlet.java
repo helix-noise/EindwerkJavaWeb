@@ -5,9 +5,11 @@
  */
 package Servlet;
 
+import bll.Aankoop;
 import bll.Film;
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -22,10 +24,14 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Helix
  */
-public class HaalDetails extends HttpServlet {
+public class WinkelMandjeServlet extends HttpServlet {
 
-    private EntityManagerFactory emf;
-    private EntityManager em;
+    private EntityManagerFactory _emf;
+    private EntityManager _em;
+    private Aankoop _aankoop;
+    private List<Aankoop> _winkelMandje;
+    private Film _film;
+    private float _totaal;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -39,26 +45,40 @@ public class HaalDetails extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            try {
-                int id = Integer.parseInt(request.getParameter("id"));
-                emf = Persistence.createEntityManagerFactory("EindwerkJavaFilmShopPU");
-                em = emf.createEntityManager();
-                em.getTransaction().begin();
-                Query q = em.createNamedQuery("Film.findById");
-                q.setParameter("id", id);
-                Film film = (Film) q.getSingleResult();
-                request.setAttribute("FilmDetail", film);
-                RequestDispatcher rs = request.getRequestDispatcher("Detail.jsp");
-                rs.forward(request, response);
-            } catch (Exception e) {
-                RequestDispatcher rs = request.getRequestDispatcher("ErrorPagina.jsp");
-                rs.forward(request, response);
-            } finally {
-                em.close();
-                emf.close();
+        try {
+            int id = Integer.parseInt(request.getParameter("id"));
+            _emf = Persistence.createEntityManagerFactory("EindwerkJavaFilmShopPU");
+            _em = _emf.createEntityManager();
+            _em.getTransaction().begin();
+            Query q = _em.createNamedQuery("Film.findById").setParameter("id", id);
+            _film = (Film) q.getSingleResult();
+            _aankoop = new Aankoop();
+            _aankoop.setNaam(_film.getNaam());
+            _aankoop.setAantal(Integer.parseInt(request.getParameter("Aantal")));
+            _aankoop.setPrijs(_film.getPrijs());
+            if (request.getSession().getAttribute("winkelMandje") != null) {
+                _winkelMandje = (List<Aankoop>) request.getSession().getAttribute("winkelMandje");
+            } else {
+                _winkelMandje = new ArrayList();
             }
+            _winkelMandje.add(_aankoop);
+            _totaal = 0;
+            for (Aankoop aankoop : _winkelMandje) {
+                _totaal += aankoop.getSubtotaal();
+            }
+            request.setAttribute("Totaal", _totaal);
+            request.getSession().setAttribute("winkelMandje", _winkelMandje);
+            RequestDispatcher rs = request.getRequestDispatcher("WinkelMandje.jsp");
+            rs.forward(request, response);
+
+        } catch (Exception e) {
+            RequestDispatcher rs = request.getRequestDispatcher("ErrorPagina.jsp");
+            rs.forward(request, response);
+        } finally {
+            _em.close();
+            _emf.close();
         }
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

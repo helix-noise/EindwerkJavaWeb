@@ -50,7 +50,8 @@ public class LaadFilmLijst extends HttpServlet {
             RequestDispatcher rs = request.getRequestDispatcher("Films.jsp");
             rs.forward(request, response);
         } catch (Exception e) {
-
+            RequestDispatcher rs = request.getRequestDispatcher("ErrorPagina.jsp");
+            rs.forward(request, response);
         } finally {
             em.close();
             emf.close();
